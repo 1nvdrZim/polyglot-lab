@@ -1,0 +1,15 @@
+{
+  // Practice without help. These apply only when this folder is open in
+  // VS Code; delete a line (or this file) to bring that feature back.
+
+  // AI: no inline "ghost text" completions and no next-edit suggestions.
+  "github.copilot.enable": { "*": false },
+  "github.copilot.nextEditSuggestions.enabled": false,
+  "editor.inlineSuggest.enabled": false,
+
+  // Autocomplete: no pop-up list while typing and no parameter hints.
+  "editor.quickSuggestions": { "other": "off", "comments": "off", "strings": "off" },
+  "editor.suggestOnTriggerCharacters": false,
+  "editor.wordBasedSuggestions": "off",
+  "editor.parameterHints.enabled": false
+}
