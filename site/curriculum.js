@@ -4,6 +4,7 @@
 
 window.CURRICULUM = {
   languages: [
+    { id: 'javascript', name: 'JavaScript', file: 'main.js', hl: 'javascript' },
     { id: 'python', name: 'Python', file: 'main.py', hl: 'python' },
     { id: 'java', name: 'Java', file: 'Main.java', hl: 'java' },
     { id: 'csharp', name: 'C#', file: 'Program.cs', hl: 'csharp' },
@@ -18,11 +19,12 @@ window.CURRICULUM = {
       summary:
         'One small program: greet, average five numbers, and show the difference between integer and floating-point division.',
       concepts: [
-        'Static typing (Java, C#, C, C++) fixes a variable\'s type at compile time; dynamic typing (Python) checks at run time.',
-        'Compiled to native code (C, C++), compiled to bytecode for a virtual machine (Java, C#), or interpreted (Python).',
-        'Dividing two integers truncates in every language here except Python, which has a separate // operator for it.',
+        'Static typing (Java, C#, C, C++) fixes a variable\'s type at compile time; dynamic typing (JavaScript, Python) checks at run time.',
+        'Compiled to native code (C, C++), compiled to bytecode for a virtual machine (Java, C#), or run straight from source (JavaScript, Python).',
+        'Dividing two integers truncates in Java, C#, C and C++. Python has a separate // operator for it, and JavaScript has no integer type at all.',
       ],
       notice: {
+        javascript: 'One number type for everything: 7 / 2 is 3.5, and integer division needs Math.trunc. Java and C# give two different answers.',
         python: 'No declarations and no main function. The type hints are documentation only.',
         java: 'Everything sits inside a class, and main has a fixed signature. Arrays know their length.',
         csharp: 'Top-level statements remove the class and Main boilerplate. $"..." is string interpolation.',
@@ -42,6 +44,7 @@ window.CURRICULUM = {
         'A function that answers yes/no returns a boolean. C only gained a real bool type through stdbool.h.',
       ],
       notice: {
+        javascript: 'console.log always ends the line, so the primes are joined into one string first. The typed languages each have a print-without-newline call.',
         python: 'Indentation is the block structure. range(1, 16) excludes 16.',
         java: 'print versus println. Single-statement ifs may drop the braces.',
         csharp: 'FizzBuzz is written as a switch expression over a tuple, a pattern-matching feature the others lack.',
@@ -61,6 +64,7 @@ window.CURRICULUM = {
         'A stable sort keeps equal elements in their original order, which the C++ version exploits.',
       ],
       notice: {
+        javascript: 'A Map with get and set, and ?? for the missing-key default. The comparator contract (negative, zero, positive) is the same one Java and C use.',
         python: 'Counter does the counting; a tuple key with a negated count handles the mixed sort order.',
         java: 'Map<String, Integer> must use the boxed Integer type. merge() is insert-or-update in one call.',
         csharp: 'LINQ reads like a query: OrderByDescending(...).ThenBy(...).',
@@ -77,9 +81,10 @@ window.CURRICULUM = {
       concepts: [
         'A class bundles data with the functions that operate on it; C has only the data half (struct).',
         'Encapsulation: hide the fields and expose a small set of operations so invalid states are harder to create.',
-        'Who owns the memory? Java, C# and Python have a garbage collector. C++ containers free themselves. C leaves it to you.',
+        'Who owns the memory? JavaScript, Java, C# and Python have a garbage collector. C++ containers free themselves. C leaves it to you.',
       ],
       notice: {
+        javascript: 'No types on fields or parameters. #tasks is a private field; Java and C# write private and also declare each field\'s type.',
         python: '@dataclass generates the constructor. Mutable defaults need default_factory.',
         java: 'Private fields with accessor methods. final means the field cannot be reassigned.',
         csharp: 'Properties replace getters; { get; private set; } makes a value readable everywhere but writable only inside the class.',
@@ -227,7 +232,7 @@ window.CURRICULUM = {
   projects: [
     {
       title: 'Lesson 05: files and errors',
-      langs: 'All five',
+      langs: 'All six',
       body: 'Read a text file and report line, word and character counts. Handle the missing-file case: exceptions in Java, C# and Python, return codes in C, and either in C++. Add it to this site as a new lesson.',
     },
     {

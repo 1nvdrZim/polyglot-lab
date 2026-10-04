@@ -3,7 +3,7 @@
 #   .\scripts\run.ps1 cpp 03-collections
 param(
     [Parameter(Mandatory, Position = 0)]
-    [ValidateSet('java', 'csharp', 'c', 'cpp', 'python')]
+    [ValidateSet('javascript', 'python', 'java', 'csharp', 'c', 'cpp')]
     [string]$Lang,
 
     [Parameter(Mandatory, Position = 1)]
@@ -26,6 +26,7 @@ New-Item -ItemType Directory -Force $build | Out-Null
 $exe = Join-Path $build "$Lang-$($dir.Name).exe"
 
 switch ($Lang) {
+    'javascript' { node (Join-Path $dir.FullName 'main.js') }
     'java'   { java (Join-Path $dir.FullName 'Main.java') }
     'csharp' { dotnet run (Join-Path $dir.FullName 'Program.cs') }
     'python' { py (Join-Path $dir.FullName 'main.py') }

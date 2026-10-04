@@ -82,7 +82,7 @@ async function loadSource(langId, lessonId) {
 }
 
 function codePane(lesson, slot) {
-  const chosen = store.read(`pane:${slot}`, slot === 0 ? 'python' : 'c');
+  const chosen = store.read(`pane:${slot}`, slot === 0 ? 'javascript' : 'java');
   const lang = languages.find((l) => l.id === chosen) ?? languages[0];
   const number = lesson.id.slice(0, 2);
 

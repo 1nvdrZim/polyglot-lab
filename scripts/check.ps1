@@ -1,8 +1,8 @@
-# Run every lesson in every language and confirm that all five
+# Run every lesson in every language and confirm that all six
 # implementations of a lesson print exactly the same output.
 #   .\scripts\check.ps1
 $root = Split-Path $PSScriptRoot -Parent
-$langs = 'python', 'java', 'csharp', 'c', 'cpp'
+$langs = 'python', 'javascript', 'java', 'csharp', 'c', 'cpp'
 $lessons = Get-ChildItem (Join-Path $root 'languages\python') -Directory | ForEach-Object Name
 $failed = 0
 
