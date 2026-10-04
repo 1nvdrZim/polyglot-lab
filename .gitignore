@@ -1,0 +1,20 @@
+# Compiled output
+build/
+bin/
+obj/
+*.exe
+*.o
+*.obj
+*.class
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Editors and OS
+.vs/
+.idea/
+*.swp
+Thumbs.db
+.DS_Store
