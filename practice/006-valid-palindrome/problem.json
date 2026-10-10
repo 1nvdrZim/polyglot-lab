@@ -1,0 +1,28 @@
+{
+  "title": "Valid palindrome",
+  "difficulty": "easy",
+  "function": "isPalindrome",
+  "params": [["text","string"]],
+  "returns": "bool",
+  "summary": "Return true if `text` reads the same in both directions, ignoring case and anything that is not a letter or digit.",
+  "hints": [
+    "To check a palindrome by hand you compare two characters at a time. Which two do you start with, and where do you go next?",
+    "Use two positions, one at each end, moving towards each other. Skip any character that is not a letter or digit before comparing.",
+    "While left < right: move left forward past characters to skip, move right back past characters to skip, compare the two in lowercase, then step both inward."
+  ],
+  "pattern": "Two pointers from both ends",
+  "takeaway": "Two pointers check the string in place: O(n) time and no extra memory. Building a cleaned copy and comparing it with its reverse also works and is easier to write under pressure.",
+  "tests": [
+    {"args":["A man, a plan, a canal: Panama"],"expected":true},
+    {"args":["race a car"],"expected":false},
+    {"args":[" "],"expected":true},
+    {"args":["0P"],"expected":false},
+    {"args":["a"],"expected":true},
+    {"args":["ab"],"expected":false},
+    {"args":["Was it a car or a cat I saw?"],"expected":true},
+    {"args":["No lemon, no melon"],"expected":true},
+    {"args":[".,"],"expected":true},
+    {"args":["ab_a"],"expected":true},
+    {"args":["1a2"],"expected":false}
+  ]
+}

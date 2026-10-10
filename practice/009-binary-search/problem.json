@@ -1,0 +1,28 @@
+{
+  "title": "Binary search",
+  "difficulty": "easy",
+  "function": "search",
+  "params": [["nums","int[]"],["target","int"]],
+  "returns": "int",
+  "summary": "Return the index of `target` in the sorted array `nums`, or -1 if it is not there.",
+  "hints": [
+    "Look at the middle element first. Because the array is sorted, what does comparing it with the target tell you about half of the array?",
+    "Keep a low and a high position marking the part that could still contain the target. Each comparison with the middle lets you discard half of it.",
+    "While low <= high: mid = low + (high - low) / 2 using integer division. If nums[mid] is the target return mid; if it is smaller set low = mid + 1; otherwise set high = mid - 1. Return -1 after the loop."
+  ],
+  "pattern": "Binary search",
+  "takeaway": "Halving the search range each step is O(log n): about 17 steps for 100,000 items. The classic bugs are an off-by-one in the loop condition and forgetting integer division for mid.",
+  "tests": [
+    {"args":[[-1,0,3,5,9,12],9],"expected":4},
+    {"args":[[-1,0,3,5,9,12],2],"expected":-1},
+    {"args":[[5],5],"expected":0},
+    {"args":[[5],-5],"expected":-1},
+    {"args":[[1,3],1],"expected":0},
+    {"args":[[1,3],3],"expected":1},
+    {"args":[[1,3],2],"expected":-1},
+    {"args":[[2,4,6,8,10,12,14],14],"expected":6},
+    {"args":[[2,4,6,8,10,12,14],2],"expected":0},
+    {"args":[[2,4,6,8,10,12,14],1],"expected":-1},
+    {"args":[[2,4,6,8,10,12,14],15],"expected":-1}
+  ]
+}

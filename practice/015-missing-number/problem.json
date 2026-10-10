@@ -1,0 +1,26 @@
+{
+  "title": "Missing number",
+  "difficulty": "easy",
+  "function": "missingNumber",
+  "params": [["nums","int[]"]],
+  "returns": "int",
+  "summary": "Return the one number between 0 and nums.length that does not appear in `nums`.",
+  "hints": [
+    "If nothing were missing, which numbers would be present? How does the actual list differ from that complete list?",
+    "You know exactly which numbers should be there: 0 through n. Compare a property of the complete set with the same property of the array.",
+    "Add up 0 through n, subtract the sum of the array, and what remains is the missing number. A set of the values, checked from 0 to n, also works."
+  ],
+  "pattern": "Compare against the complete set",
+  "takeaway": "The sum trick is O(n) time with no extra memory. In Java, C# and C, check that the total fits in an int before trusting it: n * (n + 1) overflows once n passes about 46,000.",
+  "tests": [
+    {"args":[[3,0,1]],"expected":2},
+    {"args":[[0,1]],"expected":2},
+    {"args":[[9,6,4,2,3,5,7,0,1]],"expected":8},
+    {"args":[[1]],"expected":0},
+    {"args":[[0]],"expected":1},
+    {"args":[[1,2,3]],"expected":0},
+    {"args":[[0,1,2,3]],"expected":4},
+    {"args":[[4,2,0,1]],"expected":3},
+    {"args":[[2,0]],"expected":1}
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "title": "Valid parentheses",
+  "difficulty": "easy",
+  "function": "isBalanced",
+  "params": [["text","string"]],
+  "returns": "bool",
+  "summary": "Return true if every bracket in `text` is closed by the same kind of bracket, in the right order.",
+  "hints": [
+    "Read `([{}])` from left to right. When you reach a closing bracket, which earlier bracket must it match: the first one opened, or the most recent one?",
+    "The most recently opened bracket must be closed first. A structure where the last item in is the first one out fits that exactly.",
+    "Push each opening bracket onto a stack. On a closing bracket, pop and check that the kinds match, failing if the stack is empty. At the end the stack must be empty."
+  ],
+  "pattern": "Stack (last in, first out)",
+  "takeaway": "Any time the most recent unfinished thing must be finished first (brackets, nested tags, undo), reach for a stack. O(n) time.",
+  "tests": [
+    {"args":["()[]{}"],"expected":true},
+    {"args":["([{}])"],"expected":true},
+    {"args":["(]"],"expected":false},
+    {"args":["(()"],"expected":false},
+    {"args":[""],"expected":true},
+    {"args":[")("],"expected":false},
+    {"args":["([)]"],"expected":false},
+    {"args":["{[]}()"],"expected":true},
+    {"args":["]"],"expected":false},
+    {"args":["(((((((((("],"expected":false},
+    {"args":["()()()()"],"expected":true}
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "title": "String compression",
+  "difficulty": "easy",
+  "function": "compress",
+  "params": [["text","string"]],
+  "returns": "string",
+  "summary": "Return `text` with each run of a repeated character replaced by the character and the run length.",
+  "hints": [
+    "Compress `aaabbc` by hand. At what moments do you write something down?",
+    "You write output when a run ends: either the next character is different or the string is finished. Track the current character and how long its run is.",
+    "Walk the string with a count. When the next character differs (or you are at the last character), append the current character, then the count if it is greater than 1, and reset the count to 1."
+  ],
+  "pattern": "Run-length scan",
+  "takeaway": "\"Do something when the run ends\" has one trap: the last run ends at the end of the string, not at a different character. Build the result with a string builder or an array; repeated string concatenation is O(n^2) in Java and C#.",
+  "tests": [
+    {"args":["aaabbc"],"expected":"a3b2c"},
+    {"args":["abc"],"expected":"abc"},
+    {"args":["aaaaaaaaaaaa"],"expected":"a12"},
+    {"args":[""],"expected":""},
+    {"args":["a"],"expected":"a"},
+    {"args":["aa"],"expected":"a2"},
+    {"args":["aabbaa"],"expected":"a2b2a2"},
+    {"args":["abbbbbbbbbbc"],"expected":"ab10c"},
+    {"args":["zzzzzyx"],"expected":"z5yx"},
+    {"args":["AAaa"],"expected":"A2a2"}
+  ]
+}

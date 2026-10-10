@@ -1,0 +1,26 @@
+{
+  "title": "First unique character",
+  "difficulty": "easy",
+  "function": "firstUniqueChar",
+  "params": [["text","string"]],
+  "returns": "int",
+  "summary": "Return the index of the first character in `text` that appears exactly once, or -1 if every character repeats.",
+  "hints": [
+    "When you checked a character by hand, what did you need to know about it? Could you find that out for every character before you start looking for the answer?",
+    "Go through the text once just to count how often each character appears. Then go through it again and stop at the first character whose count is 1.",
+    "Keep the counts in a map from character to number. In C, an int array indexed by the character's code does the same job."
+  ],
+  "pattern": "Count first, then scan",
+  "takeaway": "Two passes and a table of counts make this O(n). Comparing every character with every other one is O(n^2), which is the difference between instant and too slow on a long input.",
+  "tests": [
+    {"args":["stress"],"expected":1},
+    {"args":["level"],"expected":2},
+    {"args":["aabb"],"expected":-1},
+    {"args":[""],"expected":-1},
+    {"args":["z"],"expected":0},
+    {"args":["swiss"],"expected":1},
+    {"args":["racecar"],"expected":3},
+    {"args":["abcabcd"],"expected":6},
+    {"args":["aA"],"expected":0}
+  ]
+}

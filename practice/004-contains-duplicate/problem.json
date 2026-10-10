@@ -1,0 +1,26 @@
+{
+  "title": "Contains duplicate",
+  "difficulty": "easy",
+  "function": "containsDuplicate",
+  "params": [["nums","int[]"]],
+  "returns": "bool",
+  "summary": "Return true if any value appears at least twice in `nums`.",
+  "hints": [
+    "By hand, how do you notice a repeat in a long list? What do you keep track of as you read?",
+    "Keep a collection of the values you have already passed. For each new value, check the collection before adding to it.",
+    "A set gives a one-step \"have I seen this?\" check. Without a set (as in C), sort the array first so that duplicates end up next to each other."
+  ],
+  "pattern": "Seen-before set",
+  "takeaway": "A set makes this O(n). Sorting first is O(n log n) and needs no extra structure, which is the usual route in C.",
+  "tests": [
+    {"args":[[1,2,3,1]],"expected":true},
+    {"args":[[1,2,3,4]],"expected":false},
+    {"args":[[]],"expected":false},
+    {"args":[[7]],"expected":false},
+    {"args":[[5,5]],"expected":true},
+    {"args":[[-1,0,1,-1]],"expected":true},
+    {"args":[[2,4,6,8,10,12]],"expected":false},
+    {"args":[[1000000000,-1000000000,1000000000]],"expected":true},
+    {"label":"large input: 200,000 distinct numbers","args":[{"$range":[1,200000,1]}],"expected":false}
+  ]
+}

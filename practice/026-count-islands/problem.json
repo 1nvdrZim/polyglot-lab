@@ -1,0 +1,27 @@
+{
+  "title": "Number of islands",
+  "difficulty": "medium",
+  "function": "countIslands",
+  "params": [["grid","string[]"]],
+  "returns": "int",
+  "summary": "Return the number of islands in `grid`, where each row is a string of 1 (land) and 0 (water).",
+  "hints": [
+    "Count the islands in the first example by hand. Once you have counted an island, how do you avoid counting its other cells again?",
+    "Scan every cell. When you find land you have not visited, that is one new island: count it, then mark every land cell connected to it as visited.",
+    "For the marking step, explore from the starting cell to its four neighbours, and from each of those to theirs (depth-first with recursion or a stack, or breadth-first with a queue), skipping water, visited cells and anything outside the grid."
+  ],
+  "pattern": "Flood fill (depth-first or breadth-first search)",
+  "takeaway": "A grid is a graph: each cell is a node and its neighbours are the edges. \"Count the groups\" means running a search from every unvisited node. O(rows x columns), since each cell is visited once.",
+  "tests": [
+    {"args":[["11000","11000","00100","00011"]],"expected":3},
+    {"args":[["111","101","111"]],"expected":1},
+    {"args":[["000","000"]],"expected":0},
+    {"args":[["101","010","101"]],"expected":5},
+    {"args":[["1"]],"expected":1},
+    {"args":[["0"]],"expected":0},
+    {"args":[["10101"]],"expected":3},
+    {"args":[["1","1","0","1"]],"expected":2},
+    {"args":[["11110","11010","11000","00000"]],"expected":1},
+    {"args":[["1100","0110","0011"]],"expected":1}
+  ]
+}

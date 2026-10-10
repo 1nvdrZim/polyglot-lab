@@ -1,0 +1,25 @@
+{
+  "title": "Daily temperatures",
+  "difficulty": "medium",
+  "function": "dailyTemperatures",
+  "params": [["temperatures","int[]"]],
+  "returns": "int[]",
+  "summary": "For each day, return how many days pass until a warmer one, or 0 if none follows.",
+  "hints": [
+    "Walk through the first example by hand. When you reach a warm day, which earlier days does it finally answer?",
+    "Keep a list of days that are still waiting for a warmer day. A new temperature settles every waiting day that is cooler than it, starting with the most recent.",
+    "Use a stack of day indices still waiting. For each day, while the stack is not empty and today is warmer than the day on top, pop that day and record the difference in indices. Then push today."
+  ],
+  "pattern": "Monotonic stack",
+  "takeaway": "Each index is pushed once and popped once, so the whole thing is O(n) even though there is a loop inside a loop. \"Next greater element\" questions almost always use this stack.",
+  "tests": [
+    {"args":[[73,74,75,71,69,72,76,73]],"expected":[1,1,4,2,1,1,0,0]},
+    {"args":[[30,40,50,60]],"expected":[1,1,1,0]},
+    {"args":[[30,20,10]],"expected":[0,0,0]},
+    {"args":[[50]],"expected":[0]},
+    {"args":[[70,70,70]],"expected":[0,0,0]},
+    {"args":[[30,60,90]],"expected":[1,1,0]},
+    {"args":[[89,62,70,58,47,47,46,76,100,70]],"expected":[8,1,5,4,3,2,1,1,0,0]},
+    {"args":[[40,35,32,37,50]],"expected":[4,2,1,1,0]}
+  ]
+}

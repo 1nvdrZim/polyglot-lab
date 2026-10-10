@@ -1,0 +1,28 @@
+{
+  "title": "Longest common prefix",
+  "difficulty": "easy",
+  "function": "longestCommonPrefix",
+  "params": [["words","string[]"]],
+  "returns": "string",
+  "summary": "Return the longest string that every word in `words` starts with, or an empty string.",
+  "hints": [
+    "Take two words and find their common beginning by hand. What stops you: a mismatch, or something else?",
+    "Compare position by position: every word must have the same character at position 0, then at position 1, and so on. Stop at the first position where a word differs or runs out.",
+    "Loop over the positions of the first word. At each position, check that every other word is long enough and has the same character there. Return the part of the first word before the position where that fails."
+  ],
+  "pattern": "Column-by-column scan",
+  "takeaway": "Two things end the scan: a mismatch, and a word running out. Forgetting the second is the usual bug, and it shows up as an out-of-range read.",
+  "tests": [
+    {"args":[["flower","flow","flight"]],"expected":"fl"},
+    {"args":[["dog","racecar","car"]],"expected":""},
+    {"args":[["alone"]],"expected":"alone"},
+    {"args":[["",""]],"expected":""},
+    {"args":[["a","a","a"]],"expected":"a"},
+    {"args":[["interview","internet","interval","into"]],"expected":"int"},
+    {"args":[["ab","a"]],"expected":"a"},
+    {"args":[["a","ab"]],"expected":"a"},
+    {"args":[["same","same"]],"expected":"same"},
+    {"args":[["prefix","pre","prehistoric"]],"expected":"pre"},
+    {"args":[["x","y"]],"expected":""}
+  ]
+}

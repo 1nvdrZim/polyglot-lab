@@ -1,0 +1,26 @@
+{
+  "title": "Majority element",
+  "difficulty": "easy",
+  "function": "majorityElement",
+  "params": [["nums","int[]"]],
+  "returns": "int",
+  "summary": "Return the value that makes up more than half of `nums`.",
+  "hints": [
+    "How would you find the most common value in a short list by hand? What do you write down as you go?",
+    "Count how many times each value appears, then pick the value whose count is more than half the length.",
+    "Use a map from value to count, or sort the array: after sorting, the majority value always sits at the middle index."
+  ],
+  "pattern": "Frequency count",
+  "takeaway": "Counting with a map is O(n). Sorting and taking the middle element is O(n log n) and one line. There is also a constant-memory trick (Boyer-Moore voting) worth reading about once the basic version is comfortable.",
+  "tests": [
+    {"args":[[3,2,3]],"expected":3},
+    {"args":[[2,2,1,1,1,2,2]],"expected":2},
+    {"args":[[7]],"expected":7},
+    {"args":[[1,1]],"expected":1},
+    {"args":[[5,5,5,1,2]],"expected":5},
+    {"args":[[-1,-1,2,-1,2]],"expected":-1},
+    {"args":[[4,9,4,9,4]],"expected":4},
+    {"args":[[0,0,0,0,1,1,1]],"expected":0},
+    {"label":"large input: 200,000 numbers, the majority value comes last","args":[{"$concat":[{"$range":[8,99999,1]},{"$range":[7,100001,0]}]}],"expected":7}
+  ]
+}

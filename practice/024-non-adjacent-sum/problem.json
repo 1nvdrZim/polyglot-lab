@@ -1,0 +1,27 @@
+{
+  "title": "Largest sum without neighbours",
+  "difficulty": "medium",
+  "function": "maxNonAdjacentSum",
+  "params": [["values","int[]"]],
+  "returns": "int",
+  "summary": "Return the largest sum of elements of `values` that can be chosen without taking two that are next to each other.",
+  "hints": [
+    "Look at the last element. Either you take it or you do not. What does each choice leave you free to do with the rest?",
+    "If you take element i you cannot take i - 1, so you add its value to the best answer for the first i - 2 elements. If you skip it, you keep the best answer for the first i - 1 elements.",
+    "best[i] = max(best[i - 1], best[i - 2] + values[i]). You only ever need the previous two results, so two variables are enough."
+  ],
+  "pattern": "Dynamic programming: take it or skip it",
+  "takeaway": "Many optimisation problems reduce to one decision per element, with the best earlier results reused. Always picking the larger neighbour (a greedy choice) fails; [2, 1, 1, 2] is the counter-example.",
+  "tests": [
+    {"args":[[1,2,3,1]],"expected":4},
+    {"args":[[2,7,9,3,1]],"expected":12},
+    {"args":[[5]],"expected":5},
+    {"args":[[2,1,1,2]],"expected":4},
+    {"args":[[0]],"expected":0},
+    {"args":[[4,4]],"expected":4},
+    {"args":[[1,2,3]],"expected":4},
+    {"args":[[10,1,1,10,1]],"expected":20},
+    {"args":[[6,7,1,30,8,2,4]],"expected":41},
+    {"args":[[100,1,1,100]],"expected":200}
+  ]
+}
