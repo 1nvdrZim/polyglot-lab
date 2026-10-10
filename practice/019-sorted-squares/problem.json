@@ -1,0 +1,26 @@
+{
+  "title": "Squares of a sorted array",
+  "difficulty": "easy",
+  "function": "sortedSquares",
+  "params": [["nums","int[]"]],
+  "returns": "int[]",
+  "summary": "Return the squares of the sorted array `nums`, themselves in sorted order.",
+  "hints": [
+    "In a sorted array that includes negatives, where are the numbers with the largest squares?",
+    "The largest squares sit at the two ends of the array, so the biggest remaining square is always at one end or the other.",
+    "Use a pointer at each end and fill the result array from the back: compare the absolute values at the two ends, place the larger square, and move that pointer inward."
+  ],
+  "pattern": "Two pointers from both ends",
+  "takeaway": "Squaring and then sorting is O(n log n) and passes. Using the existing order with two pointers is O(n). Noticing structure the input already has is how most \"can you do better?\" follow-up questions are answered.",
+  "tests": [
+    {"args":[[-4,-1,0,3,10]],"expected":[0,1,9,16,100]},
+    {"args":[[-7,-3,2,3,11]],"expected":[4,9,9,49,121]},
+    {"args":[[1,2,3]],"expected":[1,4,9]},
+    {"args":[[]],"expected":[]},
+    {"args":[[-5]],"expected":[25]},
+    {"args":[[-3,-2,-1]],"expected":[1,4,9]},
+    {"args":[[0,0]],"expected":[0,0]},
+    {"args":[[-2,-2,2,2]],"expected":[4,4,4,4]},
+    {"args":[[-10,-5,0,1,7]],"expected":[0,1,25,49,100]}
+  ]
+}

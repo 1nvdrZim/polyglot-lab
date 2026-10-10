@@ -1,0 +1,27 @@
+{
+  "title": "Minimum in a rotated sorted array",
+  "difficulty": "medium",
+  "function": "findMin",
+  "params": [["nums","int[]"]],
+  "returns": "int",
+  "summary": "Return the smallest element of `nums`, a sorted array that has been rotated.",
+  "hints": [
+    "Compare the middle element with the last element. What does each possible outcome tell you about which side the smallest element is on?",
+    "If the middle element is greater than the last, the drop to the minimum is somewhere to its right. Otherwise the minimum is the middle element or something to its left.",
+    "Binary search with low and high: if nums[mid] > nums[high], set low = mid + 1; otherwise set high = mid. Stop when low equals high; that position holds the minimum."
+  ],
+  "pattern": "Binary search on a property",
+  "takeaway": "Binary search works whenever one comparison lets you discard half the range; the data does not need to be fully sorted. O(log n). Note `high = mid`, not `mid - 1`: the middle element may itself be the answer.",
+  "tests": [
+    {"args":[[3,4,5,1,2]],"expected":1},
+    {"args":[[4,5,6,7,0,1,2]],"expected":0},
+    {"args":[[11,13,15,17]],"expected":11},
+    {"args":[[2,1]],"expected":1},
+    {"args":[[1]],"expected":1},
+    {"args":[[1,2]],"expected":1},
+    {"args":[[5,1,2,3,4]],"expected":1},
+    {"args":[[2,3,4,5,1]],"expected":1},
+    {"args":[[30,40,50,10,20]],"expected":10},
+    {"args":[[-5,-3,0,-20,-10]],"expected":-20}
+  ]
+}

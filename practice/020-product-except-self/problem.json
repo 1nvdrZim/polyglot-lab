@@ -1,0 +1,26 @@
+{
+  "title": "Product of array except self",
+  "difficulty": "medium",
+  "function": "productExceptSelf",
+  "params": [["nums","int[]"]],
+  "returns": "int[]",
+  "summary": "Return an array where each position holds the product of every element of `nums` except the one at that position.",
+  "hints": [
+    "For one position, the answer is (everything to its left multiplied together) times (everything to its right multiplied together). How could you get all the \"left\" products without recomputing each one from scratch?",
+    "Build the left products in one pass from the start: each one is the previous left product times the previous element. Do the same from the end for the right products.",
+    "First pass: result[i] = the product of everything left of i (start with 1). Second pass from the right: keep a running product of everything right of i and multiply it into result[i]."
+  ],
+  "pattern": "Prefix and suffix passes",
+  "takeaway": "Precomputing \"everything before here\" and \"everything after here\" turns many O(n^2) array questions into two O(n) passes. Prefix sums are the same idea with addition.",
+  "tests": [
+    {"args":[[1,2,3,4]],"expected":[24,12,8,6]},
+    {"args":[[-1,1,0,-3,3]],"expected":[0,0,9,0,0]},
+    {"args":[[2,3]],"expected":[3,2]},
+    {"args":[[5,5]],"expected":[5,5]},
+    {"args":[[0,0]],"expected":[0,0]},
+    {"args":[[1,1,1,1]],"expected":[1,1,1,1]},
+    {"args":[[2,-2,2]],"expected":[-4,4,-4]},
+    {"args":[[10,3,5,6,2]],"expected":[180,600,360,300,900]},
+    {"args":[[0,4,5]],"expected":[20,0,0]}
+  ]
+}

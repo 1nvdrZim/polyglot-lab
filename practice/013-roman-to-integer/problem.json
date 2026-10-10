@@ -1,0 +1,29 @@
+{
+  "title": "Roman to integer",
+  "difficulty": "easy",
+  "function": "romanToInt",
+  "params": [["roman","string"]],
+  "returns": "int",
+  "summary": "Return the value of the Roman numeral `roman`.",
+  "hints": [
+    "Work out MCMXCIV by hand. At which symbols did you subtract instead of add, and what told you to?",
+    "A symbol is subtracted exactly when the symbol after it is larger. Otherwise it is added.",
+    "Map each symbol to its value. For each position, compare its value with the next symbol's value: subtract it if the next one is larger, add it otherwise. The last symbol is always added."
+  ],
+  "pattern": "Look one step ahead",
+  "takeaway": "Turning a rule stated in words into \"compare each item with its neighbour\" is a very common move. A small lookup table (a map or a switch) keeps the symbol values out of the logic.",
+  "tests": [
+    {"args":["III"],"expected":3},
+    {"args":["LVIII"],"expected":58},
+    {"args":["MCMXCIV"],"expected":1994},
+    {"args":["IX"],"expected":9},
+    {"args":["I"],"expected":1},
+    {"args":["IV"],"expected":4},
+    {"args":["XL"],"expected":40},
+    {"args":["XLII"],"expected":42},
+    {"args":["CDXLIV"],"expected":444},
+    {"args":["MMXXVI"],"expected":2026},
+    {"args":["MMMCMXCIX"],"expected":3999},
+    {"args":["DCCC"],"expected":800}
+  ]
+}

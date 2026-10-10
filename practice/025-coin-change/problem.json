@@ -1,0 +1,28 @@
+{
+  "title": "Coin change",
+  "difficulty": "medium",
+  "function": "coinChange",
+  "params": [["coins","int[]"],["amount","int"]],
+  "returns": "int",
+  "summary": "Return the fewest coins from `coins` needed to make exactly `amount`, or -1 if it cannot be made.",
+  "hints": [
+    "Try coins [1, 3, 4] and amount 6 by hand. Does always taking the biggest coin give the best answer?",
+    "Suppose you already knew the fewest coins for every amount smaller than the target. For the target itself, try each coin as the last coin used and see what amount it leaves.",
+    "Make an array `fewest` of size amount + 1 with fewest[0] = 0 and everything else marked impossible. For each amount from 1 upward and each coin that fits: fewest[a] = min(fewest[a], fewest[a - coin] + 1)."
+  ],
+  "pattern": "Dynamic programming over amounts",
+  "takeaway": "When a greedy choice fails, build a table of answers to smaller sub-problems. O(amount x number of coins). Be careful with the \"impossible\" marker: adding 1 to the largest int overflows in Java, C# and C.",
+  "tests": [
+    {"args":[[1,2,5],11],"expected":3},
+    {"args":[[2],3],"expected":-1},
+    {"args":[[1],0],"expected":0},
+    {"args":[[1,3,4],6],"expected":2},
+    {"args":[[2],4],"expected":2},
+    {"args":[[5,10],3],"expected":-1},
+    {"args":[[2,5,10,1],27],"expected":4},
+    {"args":[[186,419,83,408],6249],"expected":20},
+    {"args":[[3,7],11],"expected":-1},
+    {"args":[[1,5,10,25],63],"expected":6},
+    {"args":[[9,6,5,1],11],"expected":2}
+  ]
+}

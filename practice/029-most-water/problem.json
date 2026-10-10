@@ -1,0 +1,27 @@
+{
+  "title": "Container with most water",
+  "difficulty": "medium",
+  "function": "maxWater",
+  "params": [["heights","int[]"]],
+  "returns": "int",
+  "summary": "Return the largest value of (distance between two lines) x (the shorter of their heights).",
+  "hints": [
+    "Start with the two outermost lines, which gives the widest container. If you move one line inward the width shrinks. Which line could you move and still have a chance of doing better?",
+    "The water level is set by the shorter line. Moving the taller line inward can never help, because the width shrinks and the height is still capped by the shorter one.",
+    "Two pointers at the ends: compute the area, update the best, then move the pointer at the shorter line inward. Stop when the pointers meet."
+  ],
+  "pattern": "Two pointers with a greedy move",
+  "takeaway": "The key is an argument for why options can be safely discarded: every container that uses the shorter line with a closer partner is worse than the one you just measured. That turns O(n^2) pairs into one O(n) sweep.",
+  "tests": [
+    {"args":[[1,8,6,2,5,4,8,3,7]],"expected":49},
+    {"args":[[1,1]],"expected":1},
+    {"args":[[4,3,2,1,4]],"expected":16},
+    {"args":[[1,2,1]],"expected":2},
+    {"args":[[2,3,4,5,18,17,6]],"expected":17},
+    {"args":[[0,0]],"expected":0},
+    {"args":[[5,5,5,5]],"expected":15},
+    {"args":[[1,2,4,3]],"expected":4},
+    {"args":[[10,1,1,1,10]],"expected":40},
+    {"label":"large input: 200,000 random heights","args":[{"$random":{"count":200000,"min":0,"max":10000,"seed":29}}],"expected":1992364832}
+  ]
+}
