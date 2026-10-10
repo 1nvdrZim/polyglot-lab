@@ -1,0 +1,26 @@
+{
+  "title": "Climbing stairs",
+  "difficulty": "easy",
+  "function": "climbStairs",
+  "params": [["steps","int"]],
+  "returns": "int",
+  "summary": "Return the number of distinct ways to climb `steps` steps taking 1 or 2 steps at a time.",
+  "hints": [
+    "Think about the very last move onto the top step. Where could you have been standing just before it?",
+    "You reach step n from step n - 1 or from step n - 2, so the number of ways to reach n is the sum of the ways to reach those two.",
+    "Build the answer upwards from the small cases, keeping only the last two values. Plain recursion recomputes the same steps millions of times and is far too slow for 45."
+  ],
+  "pattern": "Dynamic programming, bottom up",
+  "takeaway": "When an answer is built from answers to smaller versions of the same question, compute the small ones first and reuse them. O(n) here, against roughly 2^n for the naive recursion.",
+  "tests": [
+    {"args":[1],"expected":1},
+    {"args":[2],"expected":2},
+    {"args":[3],"expected":3},
+    {"args":[5],"expected":8},
+    {"args":[4],"expected":5},
+    {"args":[10],"expected":89},
+    {"args":[20],"expected":10946},
+    {"args":[30],"expected":1346269},
+    {"label":"large input: 45 steps","args":[45],"expected":1836311903}
+  ]
+}

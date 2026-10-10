@@ -1,0 +1,26 @@
+{
+  "title": "Best time to buy and sell",
+  "difficulty": "easy",
+  "function": "maxProfit",
+  "params": [["prices","int[]"]],
+  "returns": "int",
+  "summary": "Return the largest profit from buying on one day and selling on a later day, or 0 if there is none.",
+  "hints": [
+    "Suppose you must sell on one particular day. Which earlier day would you have wanted to buy on?",
+    "For each day, the best profit when selling that day is its price minus the lowest price seen before it. You do not need to look back each time if you carry that lowest price along.",
+    "Walk the array once keeping two numbers: the lowest price so far and the best profit so far. Update the profit first, then the lowest price."
+  ],
+  "pattern": "Carry a running best",
+  "takeaway": "One pass carrying the minimum so far is O(n). Many array problems collapse from O(n^2) to O(n) once you see which single value from the past you actually need.",
+  "tests": [
+    {"args":[[7,1,5,3,6,4]],"expected":5},
+    {"args":[[7,6,4,3,1]],"expected":0},
+    {"args":[[2,4,1]],"expected":2},
+    {"args":[[5]],"expected":0},
+    {"args":[[1,2]],"expected":1},
+    {"args":[[3,3,3]],"expected":0},
+    {"args":[[2,1,2,1,0,1,2]],"expected":2},
+    {"args":[[1,4,2,9,3]],"expected":8},
+    {"label":"large input: 200,000 prices that only fall","args":[{"$range":[200000,200000,-1]}],"expected":0}
+  ]
+}

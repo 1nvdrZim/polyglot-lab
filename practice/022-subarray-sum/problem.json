@@ -1,0 +1,27 @@
+{
+  "title": "Subarray sum equals target",
+  "difficulty": "medium",
+  "function": "countSubarrays",
+  "params": [["nums","int[]"],["target","int"]],
+  "returns": "int",
+  "summary": "Return how many runs of consecutive elements in `nums` add up to `target`.",
+  "hints": [
+    "If you know the sum of the first j elements and the sum of the first i elements (with i < j), what is the sum of the elements between them?",
+    "A run sums to target exactly when two running totals differ by target. So at each position, ask: how many earlier running totals equal (current total - target)?",
+    "Keep a map from running total to how many times it has occurred, starting with total 0 seen once. At each element, update the total, add map[total - target] to the answer, then record the total."
+  ],
+  "pattern": "Prefix sums with a map",
+  "takeaway": "Running totals turn \"sum of a range\" into \"difference of two totals\", and a map finds the matching earlier total in one step: O(n). A sliding window does not work here, because negative numbers break it.",
+  "tests": [
+    {"args":[[1,1,1],2],"expected":2},
+    {"args":[[1,2,3],3],"expected":2},
+    {"args":[[1,-1,0],0],"expected":3},
+    {"args":[[5],5],"expected":1},
+    {"args":[[5],1],"expected":0},
+    {"args":[[0,0,0],0],"expected":6},
+    {"args":[[3,4,7,2,-3,1,4,2],7],"expected":4},
+    {"args":[[-1,-1,1],0],"expected":1},
+    {"args":[[1,2,1,2,1],3],"expected":4},
+    {"label":"large input: 200,000 random numbers","args":[{"$random":{"count":200000,"min":-100,"max":100,"seed":22}},0],"expected":757051}
+  ]
+}

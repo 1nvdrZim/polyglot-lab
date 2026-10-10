@@ -1,0 +1,28 @@
+{
+  "title": "Longest substring without repeats",
+  "difficulty": "medium",
+  "function": "longestUniqueSubstring",
+  "params": [["text","string"]],
+  "returns": "int",
+  "summary": "Return the length of the longest run of consecutive characters in `text` with no character repeated.",
+  "hints": [
+    "Extend a run one character at a time. When the new character is already in the run, how much of the left side do you have to give up to make the run valid again?",
+    "Keep a window with a left and a right edge. Move the right edge one step at a time; when a repeat enters, move the left edge forward until the repeat is gone.",
+    "Store the last index where each character was seen. When the new character was last seen inside the window, jump the left edge to one past that index. Track the largest window size as you go."
+  ],
+  "pattern": "Sliding window",
+  "takeaway": "A window that only ever moves forward is O(n). The classic bug is moving the left edge backwards: only jump it when the previous occurrence is inside the current window (try `abba`).",
+  "tests": [
+    {"args":["abcabcbb"],"expected":3},
+    {"args":["bbbbb"],"expected":1},
+    {"args":["pwwkew"],"expected":3},
+    {"args":[""],"expected":0},
+    {"args":["a"],"expected":1},
+    {"args":["au"],"expected":2},
+    {"args":["dvdf"],"expected":3},
+    {"args":["abba"],"expected":2},
+    {"args":["tmmzuxt"],"expected":5},
+    {"args":["abcdef"],"expected":6},
+    {"args":["aab"],"expected":2}
+  ]
+}

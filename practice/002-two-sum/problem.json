@@ -1,0 +1,24 @@
+{
+  "title": "Two sum",
+  "difficulty": "easy",
+  "function": "twoSum",
+  "params": [["nums","int[]"],["target","int"]],
+  "returns": "int[]",
+  "summary": "Return the indices of the two numbers in `nums` that add up to `target`, smaller index first.",
+  "hints": [
+    "Pick any number in the array. What exact value would its partner need to have?",
+    "Checking every pair works but repeats a lot of looking. As you move through the array, remember the numbers you have already passed, so that \"have I seen the partner?\" takes one step.",
+    "Keep a map from value to index. For each number, look up target minus that number in the map before adding the number itself."
+  ],
+  "pattern": "Remember what you have seen (map lookup)",
+  "takeaway": "One pass with a map from value to index is O(n). The nested-loop version is O(n^2) and fails the large test. Whenever you catch yourself searching the same data again and again, a map or set can usually answer in one step.",
+  "tests": [
+    {"args":[[2,7,11,15],9],"expected":[0,1]},
+    {"args":[[3,2,4],6],"expected":[1,2]},
+    {"args":[[3,3],6],"expected":[0,1]},
+    {"args":[[-1,-2,-3,-4,-5],-8],"expected":[2,4]},
+    {"args":[[0,4,3,0],0],"expected":[0,3]},
+    {"args":[[1,5,9,14,20],29],"expected":[2,4]},
+    {"label":"large input: 200,000 numbers, the pair is at the very end","args":[{"$concat":[{"$range":[2,199999,2]},[1]]},399999],"expected":[199998,199999]}
+  ]
+}

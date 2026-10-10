@@ -1,0 +1,28 @@
+{
+  "title": "Is subsequence",
+  "difficulty": "easy",
+  "function": "isSubsequence",
+  "params": [["part","string"],["whole","string"]],
+  "returns": "bool",
+  "summary": "Return true if the characters of `part` appear in `whole` in the same order, not necessarily next to each other.",
+  "hints": [
+    "Check `abc` against `ahbgdc` by hand. After you find the `a`, where do you start looking for the `b`?",
+    "Scan `whole` once from left to right while keeping track of which character of `part` you are waiting for.",
+    "Keep an index into `part`. For each character of `whole`, if it equals the character you are waiting for, advance the index. The answer is whether the index reached the end of `part`."
+  ],
+  "pattern": "Two pointers moving at different speeds",
+  "takeaway": "One pass, O(n). Taking the earliest possible match each time (a greedy choice) is always safe here, because matching earlier never leaves you with fewer options later.",
+  "tests": [
+    {"args":["abc","ahbgdc"],"expected":true},
+    {"args":["axc","ahbgdc"],"expected":false},
+    {"args":["","anything"],"expected":true},
+    {"args":["acb","abc"],"expected":false},
+    {"args":["",""],"expected":true},
+    {"args":["a",""],"expected":false},
+    {"args":["abc","abc"],"expected":true},
+    {"args":["aaa","aa"],"expected":false},
+    {"args":["ace","abcde"],"expected":true},
+    {"args":["aec","abcde"],"expected":false},
+    {"args":["bb","ahbgdcb"],"expected":true}
+  ]
+}

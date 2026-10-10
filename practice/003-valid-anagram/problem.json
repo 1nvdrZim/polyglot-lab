@@ -1,0 +1,26 @@
+{
+  "title": "Valid anagram",
+  "difficulty": "easy",
+  "function": "isAnagram",
+  "params": [["first","string"],["second","string"]],
+  "returns": "bool",
+  "summary": "Return true if `second` uses exactly the same characters as `first`, each the same number of times.",
+  "hints": [
+    "If the two strings have different lengths, what do you already know? If the lengths match, what must be true about each letter?",
+    "Two strings are anagrams exactly when every character appears the same number of times in both.",
+    "Count the characters of the first string up, count the second string down, and check that every count ends at zero. Sorting both strings and comparing them also works."
+  ],
+  "pattern": "Compare character counts",
+  "takeaway": "Counting is O(n); sorting both strings is O(n log n) and shorter to write. Either passes. In an interview, say the trade-off out loud.",
+  "tests": [
+    {"args":["listen","silent"],"expected":true},
+    {"args":["rat","car"],"expected":false},
+    {"args":["aab","abb"],"expected":false},
+    {"args":["",""],"expected":true},
+    {"args":["a","a"],"expected":true},
+    {"args":["ab","a"],"expected":false},
+    {"args":["Listen","silent"],"expected":false},
+    {"args":["anagram","nagaram"],"expected":true},
+    {"args":["abc","abd"],"expected":false}
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "title": "Maximum subarray",
+  "difficulty": "medium",
+  "function": "maxSubarraySum",
+  "params": [["nums","int[]"]],
+  "returns": "int",
+  "summary": "Return the largest sum of any run of consecutive elements in `nums`.",
+  "hints": [
+    "Suppose you already know the best sum of a run that ends exactly at position i - 1. What are your only two choices for a run that ends at position i?",
+    "A run ending at i either extends the best run ending at i - 1 or starts fresh at i. Extending is only worth it when the earlier sum is positive.",
+    "Keep `current` (the best sum ending here) and `best` (the best seen anywhere). For each number: current = max(number, current + number), then best = max(best, current). Start both at the first element, not at 0."
+  ],
+  "pattern": "Best run ending here (Kadane's algorithm)",
+  "takeaway": "This is the simplest dynamic programming idea: the answer for position i depends only on the answer for i - 1. O(n) instead of O(n^2). Starting `best` at 0 is the classic bug; it breaks on all-negative input.",
+  "tests": [
+    {"args":[[-2,1,-3,4,-1,2,1,-5,4]],"expected":6},
+    {"args":[[1]],"expected":1},
+    {"args":[[5,4,-1,7,8]],"expected":23},
+    {"args":[[-3,-1,-2]],"expected":-1},
+    {"args":[[-1]],"expected":-1},
+    {"args":[[0,0,0]],"expected":0},
+    {"args":[[2,-1,2,-1,2]],"expected":4},
+    {"args":[[-2,-3,4]],"expected":4},
+    {"args":[[8,-19,5,-4,20]],"expected":21},
+    {"args":[[1,2,3,-100,4]],"expected":6},
+    {"label":"large input: 200,000 random numbers","args":[{"$random":{"count":200000,"min":-1000,"max":1000,"seed":10}}],"expected":521941}
+  ]
+}
